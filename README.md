@@ -1,71 +1,71 @@
-# 🐍 Python Developer Challenge – Aptoide Scraper API
+##🐍 Aptoide Scraper API
+API para scraping de dados de apps do Aptoide Store.
 
-Welcome to the coding challenge! 🚀 
-Your task is to build a Python-based API that scrapes package data from the Aptoide app store (https://en.aptoide.com/) and exposes it through a REST endpoint.
+## 🚀 Instalação
 
-## 📋 Challenge Description
+```bash
+# Clone o repositório
+git clone <seu-repositorio>
 
-You are required to:  
-1 - Develop an API (using FastAPI or Flask, your choice) that exposes an endpoint:
-```
-GET /aptoide?package_name=<package_id>
-```
+# Instale dependências
+pip install -r requirements.txt
 
-2 - This endpoint should:
-  - Accept a package name as a query parameter (e.g. com.facebook.katana).
-  - Scrape or fetch package details from Aptoide.
-  - Return all relevant metadata about the app in JSON format.
+▶️ Execução
 
-## 🧾 Example
+bash
+uvicorn app.main:app --reload
+📚 Endpoints
 
-Request:
-```
-GET /aptoide?package_name=com.facebook.katana
-```
+GET /aptoide
 
-Response (JSON):
-```
+Retorna dados de um app específico.
+
+Parâmetros:
+
+package_name (query): Nome do pacote (ex: com.facebook.katana)
+Exemplo:
+
+bash
+curl "http://localhost:8000/aptoide?package_name=com.facebook.katana"
+Resposta (JSON):
+
+json
 {
   "name": "Facebook",
-  "size": "152.5 MB",
+  "size": "145.3 MB",
   "downloads": "2B",
-  "version": "532.0.0.55.71",
-  "release_date": "2025-09-30 17:06:59",
+  "version": "541.0.0.85.79",
+  "release_date": "2025-12-14 21:30:58",
   "min_screen": "SMALL",
   "supported_cpu": "arm64-v8a",
   "package_id": "com.facebook.katana",
-  "sha1_signature": "8A:3C:4B:26:2D:72:1A:CD:49:A4:BF:97:D5:21:31:99:C8:6F:A2:B9",
-  "developer_cn": "Facebook Corporation",
-  "organization": "Facebook Mobile",
-  "local": "Palo Alto",
+  "sha1_signature": "CC:69:EF:02:CC:1D:98:0C:EB:FC:31:4D:E9:2E:CB:63:22:AD:29:FE",
+  "developer_cn": "Meta Platforms Inc.",
+  "organization": "Meta Platforms Inc.",
+  "local": "Menlo Park",
   "country": "US",
-  "state_city": "CA"
+  "state_city": "California"
 }
-```
+GET /health
 
-## ✅ Requirements
+Verifica se a API está funcionando.
 
-- Use Python 3.9+.
-- Use a modern API framework (FastAPI preferred).
-- Write clean, well-structured, and documented code.
-- Ensure that errors (e.g. missing package, invalid input) are handled gracefully.
-- Include instructions to run the project locally.
+🏗️ Arquitetura
 
-## 🚀 Deliverables
+app/main.py - API FastAPI com endpoints
+app/scraper.py - Scraper que extrai dados do Aptoide
+app/schemas.py - Modelos Pydantic para validação
+tests/test_scraper.py - Testes do scraper
+🔧 Tecnologias
 
-Create GitHub repository (and share the link with the Aptoide Recruitment team) containing:
-- Your *source code*,
-- A README.md with:
-    - Setup instructions.
-    - Example requests/responses.
-    - Any assumptions or design decisions.
+FastAPI
+HTTPX (async requests)
+BeautifulSoup4 (web scraping)
+Pydantic (validação de dados)
+text
 
-## 🎯 Evaluation Criteria
-
-- Functionality & scalability
-- Code readability & structure.
-- API design principles.
-- Error handling.
-- Testing approach.
-
-Good luck, and happy coding! 💻✨
+### **4. Faça commit e push:**
+```bash
+git add .
+git commit -m "API Aptoide Scraper completa com scraping de 14 campos"
+git push origin main
